@@ -1,5 +1,5 @@
 .meContainer {
-  width: 40%;
+  max-width: 500px;
   backdrop-filter: blur(20px);
   margin: 4rem auto;
   border: 1px solid white;

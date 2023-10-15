@@ -31,7 +31,7 @@ export default function Login() {
 
   return (
     <div className={`${styles.meContainer}`}>
-      <h1 className="text-white text-center">Register</h1>
+      <h1 className="text-white text-center">Login</h1>
       <form onSubmit={form.handleSubmit}>
         <div className="form-group mb-3">
           <label htmlFor="email" className="text-white">
