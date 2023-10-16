@@ -5,6 +5,10 @@ import Layout from "./components/Layout/Layout";
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
 import Notfound from "./components/Notfound/Notfound";
+import Profile from "./components/Profile/Profile";
+import Tasks from "./components/Tasks/Tasks";
+import Guard from "./components/Guard/Guard";
+import GuardInverse from "./components/GuardInverse/GuardInverse";
 
 const routes = createBrowserRouter([
   {
@@ -12,8 +16,38 @@ const routes = createBrowserRouter([
     element: <Layout />,
     children: [
       { index: true, element: <Login /> },
-      { path: "login", element: <Login /> },
-      { path: "register", element: <Register /> },
+      {
+        path: "login",
+        element: (
+          <GuardInverse>
+            <Login />
+          </GuardInverse>
+        ),
+      },
+      {
+        path: "register",
+        element: (
+          <GuardInverse>
+            <Register />
+          </GuardInverse>
+        ),
+      },
+      {
+        path: "profile",
+        element: (
+          <Guard>
+            <Profile />{" "}
+          </Guard>
+        ),
+      },
+      {
+        path: "tasks",
+        element: (
+          <Guard>
+            <Tasks />
+          </Guard>
+        ),
+      },
       { path: "*", element: <Notfound /> },
     ],
   },

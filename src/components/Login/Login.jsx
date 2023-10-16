@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import styles from "./Login.module.css";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { userContext } from "../../Contexts/User";
 
 export default function Login() {
+  let userModule = useContext(userContext);
   let validationSchema = Yup.object({
     Email: Yup.string()
       .matches(
@@ -25,13 +27,16 @@ export default function Login() {
     },
     validationSchema,
     onSubmit: (values) => {
-      console.log(values);
+      userModule.loginFn(values);
     },
   });
 
   return (
     <div className={`${styles.meContainer}`}>
       <h1 className="text-white text-center">Login</h1>
+      <div className={`${userModule.error ? "text-danger " : ""} text-center`}>
+        {userModule.error ? userModule.error : ""}
+      </div>
       <form onSubmit={form.handleSubmit}>
         <div className="form-group mb-3">
           <label htmlFor="email" className="text-white">
@@ -89,7 +94,11 @@ export default function Login() {
         </div>
 
         <button type="submit" className={`${styles.meBtn} mb-5`}>
-          Login
+          {userModule.isLoading ? (
+            <i className="fa fa-spin fa-spinner"></i>
+          ) : (
+            "Login"
+          )}
         </button>
       </form>
     </div>

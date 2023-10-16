@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import styles from "./Register.module.css";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { userContext } from "../../Contexts/User";
 
 export default function Register() {
+  let userModule = useContext(userContext);
   let validationSchema = Yup.object({
     userName: Yup.string()
       .max(25, "UserName should be 25 character at max")
@@ -28,8 +30,11 @@ export default function Register() {
     gender: Yup.string()
       .required()
       .oneOf(["male", "female"], "This field is required"),
-    phone: Yup.string().matches(/01(0|1|2|5)[0-9]{8}/, "Invalid Phone format"),
+    phone: Yup.string()
+      .matches(/01(0|1|2|5)[0-9]{8}/, "Invalid Phone format")
+      .required("This field is required"),
   });
+
   let form = useFormik({
     initialValues: {
       userName: "",
@@ -41,13 +46,30 @@ export default function Register() {
     },
     validationSchema,
     onSubmit: (values) => {
-      console.log(values);
+      userModule.registerFn(values);
+      userModule.setErrorr("");
+      userModule.setSucess("");
     },
   });
 
   return (
     <div className={`${styles.meContainer}`}>
       <h1 className="text-white text-center">Register</h1>
+      <div
+        className={`${
+          userModule.error
+            ? "text-danger "
+            : userModule.success
+            ? "text-success"
+            : ""
+        } text-center`}
+      >
+        {userModule.error
+          ? userModule.error
+          : userModule.success
+          ? userModule.success
+          : ""}
+      </div>
       <form onSubmit={form.handleSubmit}>
         <div className="form-group mb-3">
           <label htmlFor="userName" className="text-white">
@@ -217,7 +239,11 @@ export default function Register() {
           )}
         </div>
         <button type="submit" className={`${styles.meBtn} mb-5`}>
-          Register
+          {userModule.isLoading ? (
+            <i className="fa fa-spin fa-spinner"></i>
+          ) : (
+            "Register"
+          )}
         </button>
       </form>
     </div>
