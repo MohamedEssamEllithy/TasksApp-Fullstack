@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import styles from "./Login.module.css";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -6,6 +6,11 @@ import { userContext } from "../../Contexts/User";
 
 export default function Login() {
   let userModule = useContext(userContext);
+  useEffect(() => {
+    userModule.setIsLoading(false);
+    userModule.setSucess("");
+    userModule.setErrorr("");
+  }, []);
   let validationSchema = Yup.object({
     Email: Yup.string()
       .matches(

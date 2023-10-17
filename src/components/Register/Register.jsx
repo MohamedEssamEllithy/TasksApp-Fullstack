@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "./Register.module.css";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -6,6 +6,11 @@ import { userContext } from "../../Contexts/User";
 
 export default function Register() {
   let userModule = useContext(userContext);
+  useEffect(() => {
+    userModule.setIsLoading(false);
+    userModule.setSucess("");
+    userModule.setErrorr("");
+  }, []);
   let validationSchema = Yup.object({
     userName: Yup.string()
       .max(25, "UserName should be 25 character at max")
@@ -34,7 +39,6 @@ export default function Register() {
       .matches(/01(0|1|2|5)[0-9]{8}/, "Invalid Phone format")
       .required("This field is required"),
   });
-
   let form = useFormik({
     initialValues: {
       userName: "",
@@ -51,7 +55,6 @@ export default function Register() {
       userModule.setSucess("");
     },
   });
-
   return (
     <div className={`${styles.meContainer}`}>
       <h1 className="text-white text-center">Register</h1>

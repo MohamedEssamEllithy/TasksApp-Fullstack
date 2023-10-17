@@ -31,7 +31,6 @@ export default function User(props) {
           setErrorr(err.response.data.Message);
       });
   }
-
   function loginFn(values) {
     setIsLoading(true);
     axios
@@ -49,7 +48,6 @@ export default function User(props) {
         if (err.response.data.Message) setErrorr("Incorrect Email or password");
       });
   }
-
   function changePasswordFn(values) {
     setIsLoading(true);
     axios
@@ -93,7 +91,27 @@ export default function User(props) {
       })
       .catch((err) => {
         setIsLoading(false);
-        console.log(err);
+        setErrorr(err.response.data.Message);
+      });
+  }
+  function deleteFn() {
+    setIsLoading(true);
+    axios
+      .delete("https://task-app-nkax.onrender.com/user/delete", {
+        headers: {
+          token: localStorage.getItem("token"),
+        },
+      })
+      .then((res) => {
+        setIsLoading(false);
+        setSucess(res.data.Message);
+        setTimeout(() => {
+          navigate("/login");
+        }, 2000);
+        // localStorage.removeItem("token"); Gives error
+      })
+      .catch((err) => {
+        setIsLoading(false);
         setErrorr(err.response.data.Message);
       });
   }
@@ -111,6 +129,7 @@ export default function User(props) {
           loginFn,
           changePasswordFn,
           updateInfoFn,
+          deleteFn,
         }}
       >
         {props.children}
