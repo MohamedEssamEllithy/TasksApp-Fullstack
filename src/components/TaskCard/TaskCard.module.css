@@ -17,3 +17,23 @@
 .title {
   color: #fe5800;
 }
+.meDoing {
+  background-color: green;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px white solid;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+.meDone {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+.meToDo {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}

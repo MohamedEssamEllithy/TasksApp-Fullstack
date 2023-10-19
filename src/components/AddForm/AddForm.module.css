@@ -1,0 +1,47 @@
+.meBtnClose {
+  background-color: #fff;
+  border: none;
+}
+
+.meInput:focus {
+  outline: none;
+}
+
+.meBtn {
+  padding: 0.5rem 2rem;
+  color: black;
+  background-color: transparent;
+  margin: auto;
+  display: block;
+  border: 1px black solid;
+  border-radius: 3rem;
+  transition: 1s;
+}
+.meBtn:hover {
+  background-color: black;
+  color: white;
+}
+
+.meAlert {
+  font-size: 12px;
+  color: red;
+  margin-top: 8px;
+}
+.meSuccess {
+  outline: 2px green solid;
+  color: green;
+}
+.meFail {
+  outline: 2px red solid;
+  color: red;
+}
+.meInput {
+  width: 100%;
+  border-radius: 8px;
+  padding-left: 10px;
+  padding: 3px 0 3px 10px;
+  border: 1px solid black;
+}
+.meMsg {
+  color: green;
+}

@@ -1,10 +1,12 @@
 .meContainer {
-  max-width: 80%;
+  max-width: 85%;
   backdrop-filter: blur(20px);
   margin: 8rem auto;
   border: 1px solid white;
   border-radius: 10px;
   padding: 1rem 4rem;
+  overflow-y: scroll;
+  height: 500px;
 }
 
 .meContainerNull {
@@ -14,4 +16,40 @@
   border: 1px solid white;
   border-radius: 10px;
   padding: 1rem 4rem;
+}
+
+.meAddCard {
+  min-width: 300px;
+  min-height: 200px;
+  background: rgba(0, 255, 0, 0.12);
+  border-radius: 1rem;
+  margin-right: 1rem;
+  margin-top: 1rem;
+  position: relative;
+  padding: 1rem;
+  border: green 1px solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.meAdd {
+  border: green 3px solid;
+  padding: 0.5rem;
+  transition: 0.5s;
+  background-color: transparent;
+}
+.meAdd:hover {
+  transform: scale(1.1);
+  border: white 3px solid;
+}
+.meScroll {
+  width: 100%;
+  min-height: 110vh;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 2;
 }

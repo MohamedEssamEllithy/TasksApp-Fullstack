@@ -3,7 +3,6 @@ import styles from "./TaskCard.module.css";
 import img from "./images/avatar.png";
 
 export default function TaskCard(props) {
-  console.log(props);
   let {
     task: {
       assignTo,
@@ -20,6 +19,20 @@ export default function TaskCard(props) {
   return (
     <>
       <div className={`${styles.meCard}`}>
+        <div
+          className={`${status == "Doing" ? styles.meDoing : "d-none"}`}
+        ></div>
+        <div className={`${status == "Done" ? styles.meDone : "d-none"}`}>
+          <i className="fa-solid fa-check" style={{ color: "#00ff00" }}></i>
+        </div>
+        <div className={`${status == "ToDo" ? styles.meToDo : "d-none"}`}>
+          <div
+            className="spinner-grow spinner-grow-sm text-warning"
+            role="status"
+          >
+            <span className="visually-hidden">Loading...</span>
+          </div>{" "}
+        </div>
         <div className="d-flex justify-content-start align-items-center">
           <img src={img} alt="img" className={`${styles.meImg}`} />
           <div>
@@ -43,8 +56,7 @@ export default function TaskCard(props) {
           <span className={` ${styles.title}`}>{userID.userName}</span>
         </div>
         <div className="mt-2">
-          Assigned to :{" "}
-          <span className={` ${styles.title}`}>{assignTo?.userName}</span>
+          Assigned to : <span className={` ${styles.title}`}>{assignTo}</span>
         </div>
       </div>
     </>
