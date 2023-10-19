@@ -1,8 +1,15 @@
 import React from "react";
 import styles from "./TaskCard.module.css";
 import img from "./images/avatar.png";
+import jwtDecode from "jwt-decode";
+import { useDispatch } from "react-redux";
+import { deleteTask } from "../../Redux/DeleteTaskSlice";
 
 export default function TaskCard(props) {
+  let dispatch = useDispatch();
+  let {
+    payload: { ID },
+  } = jwtDecode(localStorage.getItem("token"));
   let {
     task: {
       assignTo,
@@ -13,9 +20,9 @@ export default function TaskCard(props) {
       title,
       updatedAt,
       userID,
+      _id,
     },
   } = props;
-
   return (
     <>
       <div className={`${styles.meCard}`}>
@@ -58,6 +65,21 @@ export default function TaskCard(props) {
         <div className="mt-2">
           Assigned to : <span className={` ${styles.title}`}>{assignTo}</span>
         </div>
+        {userID._id == ID ? (
+          <div className="d-flex justify-content-end mt-2">
+            <button
+              className={`${styles.meDelete}`}
+              onClick={() => {
+                dispatch(deleteTask(_id));
+              }}
+            >
+              <i
+                className="fa-solid fa-trash "
+                style={{ color: "#ff0000" }}
+              ></i>
+            </button>
+          </div>
+        ) : null}
       </div>
     </>
   );

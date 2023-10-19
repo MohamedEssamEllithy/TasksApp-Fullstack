@@ -37,3 +37,8 @@
   top: 1rem;
   right: 1rem;
 }
+.meDelete {
+  background-color: transparent;
+  outline: none;
+  border: none;
+}
