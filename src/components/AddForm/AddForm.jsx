@@ -205,7 +205,13 @@ function AddForm(props) {
                 ""
               )}
             </div>
-            <div className={`${styles.meMsg} mb-2 text-center`}>
+            <div
+              className={`${
+                added == "Task has been added successfully"
+                  ? styles.meMsg
+                  : styles.meMsg2
+              } mb-2 text-center`}
+            >
               {added != "" ? added : null}
             </div>
             <button type="submit" className={`${styles.meBtn} mb-5`}>

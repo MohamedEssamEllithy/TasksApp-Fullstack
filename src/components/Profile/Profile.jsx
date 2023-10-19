@@ -95,8 +95,6 @@ export default function Profile() {
     userModule.setSucess("");
     userModule.setErrorr("");
     await userModule.deleteFn();
-    console.log(userModule.error);
-    console.log(userModule.success);
   }
   return (
     <>
