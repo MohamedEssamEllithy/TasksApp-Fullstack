@@ -53,7 +53,10 @@ function AddForm(props) {
     },
   });
   useEffect(() => {
-    if (message != "") setIsLoading(false);
+    if (message != "") {
+      props.handleRefresh();
+      setIsLoading(false);
+    }
     setAdded(message);
   }, [message]);
   useEffect(() => {

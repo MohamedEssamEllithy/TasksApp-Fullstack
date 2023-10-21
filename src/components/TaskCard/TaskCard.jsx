@@ -67,10 +67,16 @@ export default function TaskCard(props) {
         </div>
         {userID._id == ID ? (
           <div className="d-flex justify-content-end mt-2">
+            <button className={`${styles.meDelete}`}>
+              <i
+                className="fa-solid fa-wrench "
+                style={{ color: "#00ff00" }}
+              ></i>
+            </button>
             <button
               className={`${styles.meDelete}`}
               onClick={() => {
-                dispatch(deleteTask(_id));
+                dispatch(deleteTask(_id)).then(() => props.handleRefresh());
               }}
             >
               <i

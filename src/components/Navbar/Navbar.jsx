@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import styles from "./Navbar.module.css";
 import { NavLink, Link, Navigate } from "react-router-dom";
 import { tokenContext } from "../../Contexts/Token";
@@ -6,6 +6,7 @@ import { tokenContext } from "../../Contexts/Token";
 export default function Navbar() {
   let { token, setToken } = useContext(tokenContext);
 
+  useEffect(() => {}, [token]);
   function logout() {
     localStorage.removeItem("token");
     setToken(null);

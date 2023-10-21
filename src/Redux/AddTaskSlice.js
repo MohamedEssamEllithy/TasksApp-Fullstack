@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { useDispatch } from "react-redux";
 
 export let addTask = createAsyncThunk(
   "AddTasks/addTask",
@@ -16,6 +17,7 @@ export let addTask = createAsyncThunk(
           },
         }
       );
+
       return data;
     } catch (error) {
       return rejectWithValue(error.response.data);
@@ -25,7 +27,7 @@ export let addTask = createAsyncThunk(
 
 let AddTaskSlice = createSlice({
   name: "AddTasks",
-  initialState: { message: "" },
+  initialState: { message: "", change: false },
   reducers: {
     changeMsg(state) {
       state.message = "";
@@ -33,10 +35,10 @@ let AddTaskSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(addTask.fulfilled, (state, action) => {
-      state.message = action.payload.Message;
+      state.message = action.payload?.Message;
     });
     builder.addCase(addTask.rejected, (state, action) => {
-      state.message = action.payload.Message;
+      state.message = action.payload?.Message;
     });
   },
 });

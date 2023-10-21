@@ -3,13 +3,33 @@ import styles from "./Login.module.css";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { userContext } from "../../Contexts/User";
+import { useNavigate } from "react-router-dom";
+import { tokenContext } from "../../Contexts/Token";
 
 export default function Login() {
   let userModule = useContext(userContext);
+  let navigate = useNavigate();
+  let token = useContext(tokenContext);
+
+  function handleCallbackRes(res) {
+    localStorage.setItem("token", res.credential);
+    token.setToken(res.credential);
+    navigate("/tasks");
+  }
   useEffect(() => {
+    /*global google*/
     userModule.setIsLoading(false);
     userModule.setSucess("");
     userModule.setErrorr("");
+    google.accounts.id.initialize({
+      client_id:
+        "867749938848-mp8jl817fmrccj1dqrk9keptcn15buvq.apps.googleusercontent.com",
+      callback: handleCallbackRes,
+    });
+    google.accounts.id.renderButton(document.getElementById("signInDiv"), {
+      theme: "outline",
+      size: "large",
+    });
   }, []);
   let validationSchema = Yup.object({
     Email: Yup.string()
@@ -106,6 +126,7 @@ export default function Login() {
           )}
         </button>
       </form>
+      <div id="signInDiv" className="d-flex justify-content-center"></div>
     </div>
   );
 }
