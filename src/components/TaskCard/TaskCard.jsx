@@ -1,15 +1,27 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "./TaskCard.module.css";
 import img from "./images/avatar.png";
 import jwtDecode from "jwt-decode";
 import { useDispatch } from "react-redux";
 import { deleteTask } from "../../Redux/DeleteTaskSlice";
+import { tokenContext } from "../../Contexts/Token";
 
 export default function TaskCard(props) {
+  let [email, setEmail] = useState();
   let dispatch = useDispatch();
-  let {
-    payload: { ID },
-  } = jwtDecode(localStorage.getItem("token"));
+  let decoded = jwtDecode(localStorage.getItem("token"));
+
+  useEffect(() => {
+    if (localStorage.getItem("google")) {
+      setEmail(decoded.email);
+    } else {
+      let {
+        payload: { Email },
+      } = decoded;
+      setEmail(Email);
+    }
+  }, []);
+
   let {
     task: {
       assignTo,
@@ -65,7 +77,7 @@ export default function TaskCard(props) {
         <div className="mt-2">
           Assigned to : <span className={` ${styles.title}`}>{assignTo}</span>
         </div>
-        {userID._id == ID ? (
+        {userID.Email == email ? (
           <div className="d-flex justify-content-end mt-2">
             <button className={`${styles.meDelete}`}>
               <i

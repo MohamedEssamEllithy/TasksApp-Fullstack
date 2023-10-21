@@ -13,7 +13,9 @@ export default function Login() {
 
   function handleCallbackRes(res) {
     localStorage.setItem("token", res.credential);
+    localStorage.setItem("google", true);
     token.setToken(res.credential);
+    token.setGoogle(true);
     navigate("/tasks");
   }
   useEffect(() => {

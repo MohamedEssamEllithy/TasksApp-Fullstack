@@ -9,6 +9,7 @@ export default function Navbar() {
   useEffect(() => {}, [token]);
   function logout() {
     localStorage.removeItem("token");
+    localStorage.removeItem("google");
     setToken(null);
   }
   return (
