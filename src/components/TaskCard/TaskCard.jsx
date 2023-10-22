@@ -51,6 +51,7 @@ export default function TaskCard(props) {
       <div
         className={`${styles.meCard} text-primary-emphasis`}
         onClick={() => setShowcard(!showcard)}
+        title="task details"
       >
         <div
           className={`${status === "Doing" ? styles.meDoing : "d-none"}`}
@@ -73,7 +74,8 @@ export default function TaskCard(props) {
           </div>
         </div>
         {showcard && (
-          <div className={` rounded-4 p-2 ${styles.decrib}`}>
+          <div className={` rounded-4 p-2 ${styles.decrib}`}
+          >
             <div className="d-flex justify-content-start my-2">
               <p>{description}</p>
             </div>

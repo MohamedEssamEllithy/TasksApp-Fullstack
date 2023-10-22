@@ -217,7 +217,7 @@ function AddForm(props) {
             >
               {added != "" ? added : null}
             </div>
-            <button type="submit" className={`${styles.meBtn} mb-5`}>
+            <button type="submit" className={`${styles.meBtn} mb-2`}>
               {isLoading ? (
                 <i className="fa fa-spin fa-spinner"></i>
               ) : (
