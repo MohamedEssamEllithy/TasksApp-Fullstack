@@ -89,7 +89,7 @@ export default function Tasks() {
         <h2 className="text-white text-center">There are no tasks</h2>
       </div>
       <div className={`d-flex  ${styles.meContainer}`}>
-        <Navbar expand="lg" className={`bg-body-light ${styles.NAVbar}`}>
+        <Navbar  className={`bg-body-light ${styles.NAVbar}`}>
           <Container>
             <Navbar.Toggle
               aria-controls="basic-navbar-nav"

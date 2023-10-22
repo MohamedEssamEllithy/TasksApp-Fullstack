@@ -14,13 +14,13 @@ export default function Navbar() {
   }
   return (
     <>
-      <nav className={`${styles.meNav} navbar navbar-expand-lg`}>
+      <nav className={`${styles.meNav} navbar navbar-expand-lg `}>
         <div className="container">
           <Link className="navbar-brand text-light" to={"/login"}>
             Website Logo
           </Link>
           <button
-            className="navbar-toggler"
+            className="navbar-toggler border border-light text-bg-light"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent"
