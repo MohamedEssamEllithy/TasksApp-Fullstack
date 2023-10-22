@@ -1,21 +1,23 @@
 .meCard {
-  min-width: 300px;
-  min-height: 200px;
-  background: #465967;
+  min-width: 400px;
+  min-height: auto;
+   background-color: #fbfafa42;
+     border: 1px solid white;
   border-radius: 1rem;
   margin-right: 1rem;
   margin-top: 1rem;
   position: relative;
   padding: 1rem;
+  
 }
 .meImg {
-  height: 50px;
-  width: 50px;
+  height: 30px;
+  width: 30px;
   border-radius: 50%;
   margin-right: 1rem;
 }
 .title {
-  color: #fe5800;
+  color: #fbfafa;
 }
 .meDoing {
   background-color: green;
@@ -42,3 +44,12 @@
   outline: none;
   border: none;
 }
+
+.meCard .decrib {
+  
+  box-shadow: -1px -1px 1px white;
+ 
+}
+
+
+

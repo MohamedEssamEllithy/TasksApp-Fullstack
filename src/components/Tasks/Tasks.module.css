@@ -1,7 +1,9 @@
+
+
 .meContainer {
   max-width: 85%;
-  backdrop-filter: blur(20px);
-  margin: 8rem auto;
+  backdrop-filter: blur(15px);
+  margin: 4rem auto;
   border: 1px solid white;
   border-radius: 10px;
   padding: 1rem 4rem;
@@ -36,6 +38,7 @@
 
 .meAdd {
   border: green 3px solid;
+  border-radius: 1rem;
   padding: 0.5rem;
   transition: 0.5s;
   background-color: transparent;
@@ -52,4 +55,26 @@
   right: 0;
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 2;
+}
+.Navbr{
+  background-color: rgba(240, 248, 255, 0.22);
+  border-radius: 40px;
+display: flex !important;
+justify-content: space-around !important;
+flex-direction: column !important;
+align-items: center !important;
+
+}
+.navlnk{
+  box-shadow: -1px -1px 1px white;
+  border-radius: 50px;
+  margin: 10px;
+  padding: 15px;
+}
+.navlnkActive{
+box-shadow: 1px 1px 1px white;
+background-color: rgba(43, 43, 43, 0.106);
+  border-radius: 50px;
+  margin: 10px;
+  padding: 15px;
 }
