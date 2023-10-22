@@ -116,11 +116,11 @@ export default function Profile() {
         <div>
           <div className="mt-3 ">
             <span className={`${styles.meTitle}`}>Username : </span>
-            <span>{userName}</span>
+            <span className="text-light">{userName}</span>
           </div>
           <div>
             <span className={`${styles.meTitle}`}>Email: </span>
-            <span>{Email}</span>
+            <span className="text-light">{Email}</span>
           </div>
         </div>
         {localStorage.getItem("google") ? null : (

@@ -16,7 +16,7 @@ export default function Navbar() {
     <>
       <nav className={`${styles.meNav} navbar navbar-expand-lg`}>
         <div className="container">
-          <Link className="navbar-brand" to={"/login"}>
+          <Link className="navbar-brand text-light" to={"/login"}>
             Website Logo
           </Link>
           <button
@@ -33,27 +33,31 @@ export default function Navbar() {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <li className={`nav-item ${token ? "d-none" : "d-inline"}`}>
-                <NavLink className="nav-link" to={"/login"}>
+                <NavLink className="nav-link text-light " to={"/login"}>
                   Login
                 </NavLink>
               </li>
               <li className={`nav-item ${token ? "d-none" : "d-inline"}`}>
-                <NavLink className="nav-link" to={"/register"}>
+                <NavLink className="nav-link text-light" to={"/register"}>
                   Register
                 </NavLink>
               </li>
               <li className={`nav-item ${token ? "d-inline" : "d-none"}`}>
-                <NavLink className="nav-link" to={"/tasks"}>
+                <NavLink className="nav-link text-light" to={"/tasks"}>
                   Tasks
                 </NavLink>
               </li>
               <li className={`nav-item ${token ? "d-inline" : "d-none"}`}>
-                <NavLink className="nav-link" to={"/profile"}>
+                <NavLink className="nav-link text-light" to={"/profile"}>
                   Profile
                 </NavLink>
               </li>
               <li className={`nav-item ${token ? "d-inline" : "d-none"}`}>
-                <NavLink className="nav-link" onClick={logout} to={"/"}>
+                <NavLink
+                  className="nav-link text-light"
+                  onClick={logout}
+                  to={"/"}
+                >
                   Logout
                 </NavLink>
               </li>
