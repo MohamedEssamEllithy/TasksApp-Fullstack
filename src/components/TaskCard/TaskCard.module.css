@@ -1,5 +1,5 @@
 .meCard {
-  min-width: 400px;
+  min-width: 294px;
   min-height: auto;
    background-color: #fbfafa42;
      border: 1px solid white;
@@ -8,6 +8,7 @@
   margin-top: 1rem;
   position: relative;
   padding: 1rem;
+  cursor:pointer;
   
 }
 .meImg {

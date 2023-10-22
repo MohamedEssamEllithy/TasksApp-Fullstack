@@ -27,6 +27,10 @@ export default function Tasks() {
  useEffect(() => {
    if (!isLoading && data) {
      setTasksArr(data.data.alltasks);
+     setallflag(true);
+     setToDoflag(false);
+     setDoingflag(false);
+     setDoneflag(false);
    }
  }, [isLoading, data]);
 
@@ -82,10 +86,10 @@ export default function Tasks() {
           tasksArr.length == 0 ? styles.meContainerNull : "d-none"
         }`}
       >
-        <h2 className="text-white text-center">There are no avialble tasks</h2>
+        <h2 className="text-white text-center">There are no tasks</h2>
       </div>
-      <div className={`d-flex ${styles.meContainer}`}>
-        <Navbar expand="lg" className="bg-body-light">
+      <div className={`d-flex  ${styles.meContainer}`}>
+        <Navbar expand="lg" className={`bg-body-light ${styles.NAVbar}`}>
           <Container>
             <Navbar.Toggle
               aria-controls="basic-navbar-nav"
@@ -96,30 +100,33 @@ export default function Tasks() {
                 <Nav.Link
                   className={
                     allflag
-                      ? `text-light my-4 ${styles.navlnkActive}`
-                      : `text-light my-4 ${styles.navlnk}`
+                      ? `text-light mt-4 ${styles.navlnkActive}`
+                      : `text-light mt-4 ${styles.navlnk}`
                   }
                   onClick={Alltasks}
+                  title="All Tasks"
                 >
                   All
                 </Nav.Link>
                 <Nav.Link
                   className={
                     ToDoflag
-                      ? `text-light my-4 ${styles.navlnkActive}`
-                      : `text-light my-4 ${styles.navlnk}`
+                      ? `text-light my-2 ${styles.navlnkActive}`
+                      : `text-light my-2 ${styles.navlnk}`
                   }
                   onClick={ToDo}
+                  title="ToDo Tasks"
                 >
                   <i class="fa-regular fa-pen-to-square fa-xl"></i>
                 </Nav.Link>
                 <Nav.Link
                   className={
                     Doingflag
-                      ? `text-light my-4 ${styles.navlnkActive}`
-                      : `text-light my-4 ${styles.navlnk}`
+                      ? `text-light my-2 ${styles.navlnkActive}`
+                      : `text-light my-2 ${styles.navlnk}`
                   }
                   onClick={Doing}
+                  title="Doing Tasks"
                 >
                   <i class="fa-solid fa-person-digging fa-xl"></i>
                 </Nav.Link>
@@ -130,6 +137,7 @@ export default function Tasks() {
                       : `text-light my-4 ${styles.navlnk}`
                   }
                   onClick={Done}
+                  title="Done Tasks"
                 >
                   <i class="fa-solid fa-check-double fa-xl"></i>
                 </Nav.Link>

@@ -3,12 +3,13 @@
 .meContainer {
   max-width: 85%;
   backdrop-filter: blur(15px);
-  margin: 4rem auto;
+  margin: 4rem auto 0;
   border: 1px solid white;
   border-radius: 10px;
   padding: 1rem 4rem;
   overflow-y: scroll;
-  height: 500px;
+  max-height: 66vh;
+  position: relative;
 }
 
 .meContainerNull {
@@ -27,6 +28,7 @@
   border-radius: 1rem;
   margin-right: 1rem;
   margin-top: 1rem;
+  margin-bottom: 1rem;
   position: relative;
   padding: 1rem;
   border: green 1px solid;
@@ -49,7 +51,7 @@
 }
 .meScroll {
   width: 100%;
-  min-height: 110vh;
+  min-height: 100vh;
   position: absolute;
   top: 0;
   right: 0;
@@ -77,4 +79,11 @@ background-color: rgba(43, 43, 43, 0.106);
   border-radius: 50px;
   margin: 10px;
   padding: 15px;
+}
+.NAVbar{
+  position: sticky ;
+  top:15px;
+  left:0px
+  
+
 }
