@@ -5,6 +5,9 @@ import * as Yup from "yup";
 import { userContext } from "../../Contexts/User";
 import { useNavigate } from "react-router-dom";
 import { tokenContext } from "../../Contexts/Token";
+import axios from "axios";
+import jwtDecode from "jwt-decode";
+import { nanoid } from "@reduxjs/toolkit";
 
 export default function Login() {
   let userModule = useContext(userContext);
@@ -12,12 +15,32 @@ export default function Login() {
   let token = useContext(tokenContext);
 
   function handleCallbackRes(res) {
-    localStorage.setItem("token", res.credential);
-    localStorage.setItem("google", true);
-    token.setToken(res.credential);
-    token.setGoogle(true);
-    navigate("/tasks");
+    // localStorage.setItem("token", res.credential);
+    // localStorage.setItem("google", true);
+    // token.setToken(res.credential);
+    // token.setGoogle(true);
+    // navigate("/tasks");
+    console.log(res);
+    let decode = jwtDecode(res.credential);
+    console.log(decode);
+    axios
+      .post("https://task-app-nkax.onrender.com/googleLogin", {
+        userName: decode.given_name,
+        Email: decode.email,
+        password: nanoid(),
+        age: 12,
+        gender: "notdefined",
+        phone: "",
+        isVerified: true,
+      })
+      .then(() => {
+        navigate("/tasks");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
+
   useEffect(() => {
     /*global google*/
     userModule.setIsLoading(false);
@@ -25,7 +48,7 @@ export default function Login() {
     userModule.setErrorr("");
     google.accounts.id.initialize({
       client_id:
-        "867749938848-mp8jl817fmrccj1dqrk9keptcn15buvq.apps.googleusercontent.com",
+        "336014810709-n50q2ohjhitbi1a15iu14jhvtkqqp3ru.apps.googleusercontent.com",
       callback: handleCallbackRes,
     });
     google.accounts.id.renderButton(document.getElementById("signInDiv"), {

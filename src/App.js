@@ -9,6 +9,7 @@ import Profile from "./components/Profile/Profile";
 import Tasks from "./components/Tasks/Tasks";
 import Guard from "./components/Guard/Guard";
 import GuardInverse from "./components/GuardInverse/GuardInverse";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 const routes = createBrowserRouter([
   {
@@ -56,7 +57,9 @@ const routes = createBrowserRouter([
 function App() {
   return (
     <>
-      <RouterProvider router={routes}></RouterProvider>
+      <GoogleOAuthProvider clientId="336014810709-n50q2ohjhitbi1a15iu14jhvtkqqp3ru.apps.googleusercontent.com">
+        <RouterProvider router={routes}></RouterProvider>
+      </GoogleOAuthProvider>
     </>
   );
 }
