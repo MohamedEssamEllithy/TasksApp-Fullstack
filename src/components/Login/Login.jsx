@@ -46,15 +46,15 @@ export default function Login() {
     userModule.setIsLoading(false);
     userModule.setSucess("");
     userModule.setErrorr("");
-    google.accounts.id.initialize({
-      client_id:
-        "336014810709-n50q2ohjhitbi1a15iu14jhvtkqqp3ru.apps.googleusercontent.com",
-      callback: handleCallbackRes,
-    });
-    google.accounts.id.renderButton(document.getElementById("signInDiv"), {
-      theme: "outline",
-      size: "large",
-    });
+    // google.accounts.id.initialize({
+    //   client_id:
+    //     "336014810709-n50q2ohjhitbi1a15iu14jhvtkqqp3ru.apps.googleusercontent.com",
+    //   callback: handleCallbackRes,
+    // });
+    // google.accounts.id.renderButton(document.getElementById("signInDiv"), {
+    //   theme: "outline",
+    //   size: "large",
+    // });
   }, []);
   let validationSchema = Yup.object({
     Email: Yup.string()
