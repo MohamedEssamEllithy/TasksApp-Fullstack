@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import styles from "./Navbar.module.css";
 import { NavLink, Link, Navigate } from "react-router-dom";
 import { tokenContext } from "../../Contexts/Token";
+import logo from "./images/Logo.png";
 
 export default function Navbar() {
   let { token, setToken } = useContext(tokenContext);
@@ -17,7 +18,7 @@ export default function Navbar() {
       <nav className={`${styles.meNav} navbar navbar-expand-lg `}>
         <div className="container">
           <Link className="navbar-brand text-light" to={"/login"}>
-            Website Logo
+            <img src={logo} alt="logo" style={{ height: "50px" }} />
           </Link>
           <button
             className="navbar-toggler border border-light text-bg-light"
