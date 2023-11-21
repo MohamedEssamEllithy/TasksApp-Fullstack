@@ -20,4 +20,4 @@ Task App is a task management application designed to streamline communication b
 - Bootstrap
 - CSS
 
-  For more information, you can visit the [live project](https://tasks-app-gilt.vercel.app/), the [backend repo.](https://github.com/Mohamed-Gamal-2/Task-App)
+  For more information, you can visit the [live project](https://tasks-app-gilt.vercel.app/), the [backend repo.](https://github.com/MohamedEssamEllithy/trelloApp.git)
